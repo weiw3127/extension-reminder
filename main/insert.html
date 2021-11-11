@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+
+  <style>
+    @import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
+    #hintDiv {
+      font-family: 'Noto Sans TC', sans-serif;
+      line-height: 1.8;
+      position: absolute;
+      width: 20%;
+      min-width: 250px;
+      box-sizing: border-box;
+      height: 70vh;
+      overflow-y: scroll;
+    }
+
+    #mydivheader {
+      padding: 10px;
+      cursor: move;
+      z-index: 10;
+      background-color: #003049;
+      color: #fff;
+      font-size: 0.8em;
+      line-height: 0.8em;
+      position:sticky;
+      top: 0;
+    }
+
+    #mydivheader button{
+      padding: 5px;
+      color: #003049;
+      border: none;
+      background-color: white;
+    }
+
+    #mydivheader button:first-child{
+      position: relative;
+      left: 2px;
+    }
+    #mydivheader button:last-child{
+      position: absolute;
+      right: 10px;
+    }
+    #mydivheader button:last-child a{
+      text-decoration: none;
+      color: #003049;
+    }
+
+    .caret {
+      cursor: pointer;
+      user-select: none;
+      font-weight: bold;
+      color: #780000;
+    }
+
+    .caret::before {
+      content: "▶";
+      color: black;
+      display: inline-block;
+      margin: 0 6px;
+      color: #780000;
+    }
+
+    .caret-down::before {
+      transform: rotate(90deg);
+    }
+
+    .nested {
+      display: none;
+    }
+
+    .active {
+      display: block;
+    }
+
+    #hintDiv ul{
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #hintDiv ul li{
+      border: 1px solid #ddd;
+      margin-top: -1px; /* Prevent double borders */
+      background-color: #fdf0d5;
+      padding: 2px;
+      font-size: 16px;
+      color: #003049;
+      display: block;
+      position: relative;
+    }
+
+    #hintDiv ul li:hover {
+      background-color: #eee;
+    }
+
+    .strikethrough {
+      text-decoration: line-through;
+      color: #003049;
+    }
+
+  </style>
+
+  <body>
+    <div id="hintDiv" style="top: 30px; left: 20px;">
+      <div id="mydivheader">
+        <button onclick="document.querySelector('#hintDiv').remove()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <button id='guideline'>
+          <a href='https://guideline.vzbuilders.com/pages/viewpage.action?spaceKey=CAKE&title=ProgramMembership' target="_blank" >Guideline</a>
+        </button>
+      </div>
+      <ul id="myUL">
+        <li>
+          <span class="caret caret-down" style="display:inline-block; transform:translateX(0px)">ProgramMembership</span>
+          <ul class="nested active" style="transform:translateX(20px)">
+            <li class="strike">membershipNumber</li>
+            <li><span class="caret caret-down" style="display:inline-block; transform:translateX(0px)">subscribedTo</span>
+              <ul class="nested active" style="transform:translateX(20px)">
+                <li class="strike">subscriptionStatus</li>
+                <li class="strike">subscriptionId</li>
+                <li><span class="caret caret-down" style="display:inline-block; transform:translateX(0px)">providesService</span>
+                  <ul class="nested active" style="transform:translateX(20px)">
+                    <li class="strike">name</li>
+                    <li class="strike">description</li>
+                    <li class="strike">image</li>
+                    <li><span class="caret" style="display:inline-block; transform:translateX(0px)">provider</span>
+                      <ul class="nested" style="transform:translateX(20px)">
+                        <li class="strike">name</li>
+                        <li class="strike">url</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <span class="caret caret-down" style="display:inline-block; transform:translateX(0px)">subscriptionPlan</span>
+                  <ul class="nested active" style="transform:translateX(20px)">
+                    <li class="strike">billingCycleType</li>
+                    <li class="strike">endDate</li>
+                    <li class="strike">frequency</li>
+                    <li class="strike">startDate</li>
+                    <li>
+                      <span class="caret" style="display:inline-block; transform:translateX(0px)">offers</span>
+                      <ul class="nested" style="transform:translateX(20px)">
+                        <li class="strike">price</li>
+                        <li class="strike">priceCurrency</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+
+
+    <script>
+
+      document.querySelectorAll('.caret').forEach(item => {
+        item.addEventListener('click', ()=>{
+          item.parentElement.querySelector(".nested").classList.toggle("active");
+          item.classList.toggle("caret-down");
+        })
+        item.click();
+      })
+
+      document.querySelectorAll('.strike').forEach(item => {
+        item.addEventListener('click', ()=>{
+          item.classList.toggle('strikethrough');
+        })
+      });
+
+
+    //Make the DIV element draggagle:
+    dragElement(document.querySelector("#hintDiv"));
+
+    function dragElement(element){
+      let spot0 = 0, spot1 = 0, spot2 = 0, spot3 = 0;
+      element.onmousedown = dragAction;
+
+      function dragAction(e){
+        e.preventDefault();
+        spot2 = e.clientX;
+        spot3 = e.clientY;
+        document.onmouseup = stopDragging;
+        document.onmousemove = elementMove;
+      }
+
+      function elementMove(e){
+        e.preventDefault();
+        spot0 = e.clientX - spot2;
+        spot2 = e.clientX;
+        spot1 = e.clientY - spot3;
+        spot3 = e.clientY;
+        element.style.top = (element.offsetTop + spot1) + "px";
+        element.style.left = (element.offsetLeft + spot0) + "px";
+      }
+
+      function stopDragging(e){
+        document.onmouseup = null;
+        document.onmousemove = null;
+      }
+    }
+
+
+    </script>
+  </body>
+</html>
