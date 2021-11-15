@@ -1,6 +1,8 @@
 # extension_reminder
 
 ![reminder preview](preview.gif)
+
+[reminder UI on CodePen](https://codepen.io/bwlw3127/pen/jOLYPvx)
 ## Situation
 Data cleansing is a big part of any data analyst's duty. But it's also a chore phase that we will never enjoy.
 
