@@ -1,4 +1,4 @@
-# extension_reminder
+# extension_virtual_sticky_note
 
 ![reminder preview](preview.gif)
 
