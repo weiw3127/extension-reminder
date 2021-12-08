@@ -4,7 +4,7 @@
 
 [reminder UI on CodePen](https://codepen.io/bwlw3127/pen/jOLYPvx)
 ## Situation
-Data cleansing is a big part of any data analyst's duty. But it's also a chore phase that we will never enjoy.
+Data cleansing is a big part of any data analyst's day. But it's also a chore phase that will never be enjoyed.
 
 As a data team for a new internet product, there are always issues that we have to deal with:
 
