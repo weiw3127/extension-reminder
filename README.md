@@ -6,13 +6,11 @@
 ## Situation
 Data cleansing is a big part of any data analyst's day. But it's also a chore phase that will never be enjoyed.
 
-As a data team for a new internet product, there are always issues that we have to deal with:
+Dealing with data from new products requires additional effort because: 
 
-- **The data cleansing instruction is still in flux:** Our product is new. The policy on what data we want and in what form it should be displayed is constantly changing. We need to find a way to get everyone on the same page and remember the new rules so we can have a stable and consistent result.
+- **The guidance on data cleansing is still in flux:** There are many product metrics to measure our users' activation, engagement, and interactions. We often receive different requests from different parties. We need to find a way to get all members of the data team on the same page for a stable and consistent result.
     
-- **Too many items under each point:** The data we should be getting is listed in bullet points form. But the nested structure is too deep. Sometimes people forget to look at the point and the result is incomplete
-    
-- **Switching pages is annoying:** The surest way to make sure we have done everything right is to keep visiting the data cleanup guideline. But switching between tabs or windows is really annoying and increases the chances of making mistakes.
+- **Too many items under each point:** Due to the complexity of our data, sometimes people will forget to look into the details and cause an incomplete result. 
  
 ## The Extension
 This extension creates a reminder section in your work window by adding a brand new div.
